@@ -6,19 +6,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
+
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
-      - uses: subosito/flutter-action@v2
+
+      # Cache Flet's managed Flutter SDK so it doesn't re-download on every push
+      - name: Cache Flet Flutter SDK
+        uses: actions/cache@v4
         with:
-          channel: 'stable'
-      - run: pip install flet reportlab
-      - run: flet build apk --project "GyFi" --org "com.sourabha.gyfi"
-      - uses: actions/upload-artifact@v4
+          path: ~/flutter
+          key: ${{ runner.os }}-flet-flutter-3.44.8
+
+      - name: Install Python Dependencies
+        run: pip install flet reportlab
+
+      - name: Build Android APK
+        run: flet build apk --yes --project "GyFi" --org "com.sourabha.gyfi"
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
         with:
           name: GyFi-Release-APK
-          path: build/apk/app-release.apk
+          path: build/apk/*.apk
