@@ -1,0 +1,29 @@
+[project]
+name = "gyfi"
+version = "1.0.0"
+description = "GyFi: Gym & Personal Finance Tracker"
+readme = "README.md"
+authors = [
+    { name = "Sourabha Mohanty" }
+]
+license = { text = "Copyright (c) 2026 Sourabha Mohanty. All rights reserved." }
+dependencies = [
+    "flet",
+]
+
+[tool.flet]
+org = "com.sourabha.gyfi"
+product_name = "GyFi"
+company = "Sourabha Mohanty"
+copyright = "Copyright (c) 2026 Sourabha Mohanty. All rights reserved."
+
+[tool.flet.app]
+icon = "assets/gyfi.png"
+
+[tool.flet.android.permission]
+"android.permission.INTERNET" = true
+"android.permission.ACCESS_FINE_LOCATION" = true
+"android.permission.ACCESS_COARSE_LOCATION" = true
+
+[tool.flet.android.feature]
+"android.hardware.location.gps" = true

@@ -1,0 +1,98 @@
+# ==============================================================================
+# 1. Local SQLite Database & Application Data
+# ==============================================================================
+*.db
+*.db-journal
+*.sqlite3
+*.sqlite
+life_tracker.db
+gyfi.db
+
+# ==============================================================================
+# 2. Python Bytecode & Cache
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ==============================================================================
+# 3. Flet / Flutter / Android Build Artifacts
+# ==============================================================================
+# Flet mobile build directories
+build/
+dist/
+.flet/
+.flutter-plugins
+.flutter-plugins-dependencies
+.dart_tool/
+
+# Android build outputs & binaries
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+out/
+
+# Android signing keys & credentials (NEVER commit these)
+*.jks
+*.keystore
+gyfi-upload-key.jks
+key.properties
+
+# ==============================================================================
+# 4. Logs & Automation Drops
+# ==============================================================================
+*.log
+logs/
+app.log
+GyFi_incoming_notifications.txt
+
+# ==============================================================================
+# 5. IDE & Editor Configuration
+# ==============================================================================
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+*.iws
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
