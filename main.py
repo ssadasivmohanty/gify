@@ -8,7 +8,6 @@ import db
 from logger import logger
 from views_gym import build_gym_view
 from views_fin import build_finance_view
-from views_split import build_split_view
 
 
 def get_nav_destination(icon, label, selected_icon=None):
@@ -143,7 +142,6 @@ def main(page: ft.Page):
     header = build_app_header()
     gym_view, update_gym_ui = build_gym_view(page)
     fin_view, update_fin_ui = build_finance_view(page)
-    split_view, update_split_ui = build_split_view(page)
     footer = build_footer()
 
     # Navigation Handler
@@ -153,20 +151,12 @@ def main(page: ft.Page):
             logger.info("Navigating to Gym View")
             gym_view.visible = True
             fin_view.visible = False
-            split_view.visible = False
             update_gym_ui()
         elif selected_index == 1:
             logger.info("Navigating to Finance View")
             gym_view.visible = False
             fin_view.visible = True
-            split_view.visible = False
             update_fin_ui()
-        elif selected_index == 2:
-            logger.info("Navigating to Split View")
-            gym_view.visible = False
-            fin_view.visible = False
-            split_view.visible = True
-            update_split_ui()
         page.update()
 
     # Navigation Bar
@@ -182,11 +172,6 @@ def main(page: ft.Page):
                 selected_icon=ft.Icons.ACCOUNT_BALANCE_WALLET,
                 label="Finance",
             ),
-            get_nav_destination(
-                icon=ft.Icons.CALL_SPLIT,
-                selected_icon=ft.Icons.CALL_SPLIT,
-                label="Split",
-            ),
         ],
         selected_index=0,
         on_change=on_nav_change,
@@ -199,7 +184,6 @@ def main(page: ft.Page):
             header,
             gym_view,
             fin_view,
-            split_view,
             footer,
         ],
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
@@ -221,7 +205,6 @@ def main(page: ft.Page):
     # Initial view load
     gym_view.visible = True
     fin_view.visible = False
-    split_view.visible = False
     update_gym_ui()
     page.update()
     logger.info("GyFi started successfully with notch and status bar protection.")
